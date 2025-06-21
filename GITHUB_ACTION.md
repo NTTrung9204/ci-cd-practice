@@ -213,3 +213,100 @@ Ran all test suites.
 ```json
 "check": "npm run lint && npm run format && npm run type-check && npm run build",
 ```
+
+### SETUP WORKFLOWS
+
+- create `ci.yml` file in `.github/workflows`
+
+```yml
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run linting
+      run: npm run lint
+    
+    - name: Run tests
+      run: npm test
+    
+    - name: Build
+      run: npm run build
+```
+
+- explain command:
+
+```yml
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+```
+
+- use `push` and `pull_request` to listen in `main` and `develop` branch
+
+- `runs-on: ubuntu-latest` to run on the latest version of Ubuntu
+- `steps` to define the steps in the workflow
+
+- to setup environment, we use:
+
+```yml
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+```
+
+- to install dependencies, we use:
+
+```yml
+    - name: Install dependencies
+      run: npm ci
+```
+- to run linting, we use:
+
+```yml
+    - name: Run linting
+      run: npm run lint
+```
+- to run tests, we use:
+
+```yml
+    - name: Run tests
+      run: npm test
+```
+- to build the project, we use:
+
+```yml
+    - name: Build
+      run: npm run build
+```
+- to run the workflow, we can use this command:
+
+```bash
+git add .
+git commit -m "Setup CI workflow"
+git push origin develop
+```
+- results:
+
