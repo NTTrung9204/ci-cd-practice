@@ -12,9 +12,9 @@ npm install --save-dev prettier eslint-plugin-prettier eslint-config-prettier
 - config eslint in `eslint.config.mjs` file, (or `.eslintrc.js`) but don't use both
 
 ```mjs
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -25,11 +25,11 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.config({
-    extends: ["next/core-web-vitals", "next/typescript", "prettier"],
-    plugins: ["prettier"],
+    extends: ['next/core-web-vitals', 'next/typescript', 'prettier'],
+    plugins: ['prettier'],
     rules: {
       //
-      "prettier/prettier": "error",
+      'prettier/prettier': 'error',
     },
   }),
 ];
@@ -77,7 +77,6 @@ yarn.lock
     "format:check": "prettier --check ."
   }
 }
-
 ```
 
 ### DEMO
@@ -86,11 +85,12 @@ yarn.lock
 
 ```tsx
 export default function About() {
-  let x =10
+  let x = 10;
   return (
-    <div className=""><h1 className="">About</h1>
+    <div className="">
+      <h1 className="">About</h1>
     </div>
-  )
+  );
 }
 ```
 
@@ -124,7 +124,12 @@ npm run lint
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
 }
 ```
 
