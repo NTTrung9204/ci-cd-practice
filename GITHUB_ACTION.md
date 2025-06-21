@@ -301,6 +301,11 @@ jobs:
     - name: Build
       run: npm run build
 ```
+
+### DEMO
+
+#### SUCCESSFUL CASE
+
 - to run the workflow, we can use this command:
 
 ```bash
@@ -308,5 +313,67 @@ git add .
 git commit -m "Setup CI workflow"
 git push origin develop
 ```
+
 - results:
 
+- after pushing the code, we can see the workflow running pull request layout
+![pull request layout](image.png)
+
+- we can see the detail process of the workflow in the `Actions` tab
+![detail process ci](image-1.png)
+
+- if the workflow is successful, we can see the result in the `Actions` tab
+![ci successful](image-2.png)
+
+=> github action will test automatically when we push code to `main` or `develop` branch
+- it will validate the code, format code, run tests, and build the project
+
+#### FAILED CASE
+- to test the failed case, we can change the code in `src/app/components/UserProfile.tsx` file
+
+```tsx
+// import Image from 'next/image';
+
+interface UserProfileProps {
+  name: string;
+  role: string;
+  imageUrl?: string;
+}
+
+export default function UserProfile({
+  name,
+  role,
+  imageUrl = '/profile.png',
+}: UserProfileProps) {
+  const a = 10;
+  console.log(imageUrl, a);
+  return (
+    <div className="flex items-center gap-4 p-4 rounded-lg bg-gray-100">
+      {/* <Image
+        src={imageUrl}
+        alt={`${name}'s profile`}
+        width={64}
+        height={64}
+        className="rounded-full"
+      /> */}
+      <div>
+        <h2 className="text-xl font-semibold">{name}</h2>
+        <p className="text-gray-600">{role}</p>
+      </div>
+    </div>
+  );
+}
+```
+
+- then we can push the code and create pull request to `develop` branch
+
+- results:
+
+- we can see the error in pull request layout
+![error in testing](image-3.png)
+
+- we can see the detail error in the `Actions` tab
+
+![detail error action tab](image-4.png)
+
+- we can see when the error happens, it will stop the workflow and not continue to the next step (build step)
