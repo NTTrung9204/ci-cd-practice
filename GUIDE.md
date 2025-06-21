@@ -147,21 +147,52 @@ npx husky install
 npx husky add .husky/pre-commit "npx lint-staged"
 ```
 
-- config in `package.json`:
+- config in the end of (highest level) `package.json` file:
 
 ```json
 "lint-staged": {
-"src/**/*.{js,ts,jsx,tsx}": [
+  "*.{js,jsx,ts,tsx}": [
     "eslint --fix",
-    "prettier --write"
-],
-"src/**/*.{json,css,md}": [
-    "prettier --write"
-]
+    "prettier --write",
+    "git add ."
+  ]
 }
+```
+
+- run command to initial husky:
+
+```bash
+npx husky init
+```
+
+- husky will generate `pre-commit` file
+- we edit this file with command:
+
+```bash
+npm run lint-staged
+```
+
+- reconfig `package.json` file, in `script` tag:
+
+```json
+"lint-staged": "lint-staged"
+```
+
+## COMMITTIZEN
+
+- commitizen is use to create standard commit
+
+```bash
+npm install --save-dev commitizen cz-conventional-changelog
 ```
 
 ## COMMITLINT
 
 - commmitLint is used to check commit format
 - it prevents commits that do not follow the pattern
+- install commitLint:
+
+```bash
+npm install --save-dev @commitlint/cli @commitlint/config-conventional
+```
+
