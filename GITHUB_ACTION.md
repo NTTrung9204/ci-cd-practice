@@ -207,3 +207,9 @@ Snapshots:   0 total
 Time:        1.44 s
 Ran all test suites.
 ```
+
+- setup checks in `package.json`
+
+```json
+"check": "npm run lint && npm run format && npm run type-check && npm run build",
+```
