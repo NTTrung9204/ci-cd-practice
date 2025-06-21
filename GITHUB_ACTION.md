@@ -310,3 +310,14 @@ git push origin develop
 ```
 - results:
 
+- after pushing the code, we can see the workflow running pull request layout
+![pull request layout](image.png)
+
+- we can see the detail process of the workflow in the `Actions` tab
+![detail process ci](image-1.png)
+
+- if the workflow is successful, we can see the result in the `Actions` tab
+![ci successful](image-2.png)
+
+=> github action will test automatically when we push code to `main` or `develop` branch
+- it will validate the code, format code, run tests, and build the project

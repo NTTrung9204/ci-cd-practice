@@ -11,6 +11,8 @@ export default function UserProfile({
   role,
   imageUrl = '/profile.png',
 }: UserProfileProps) {
+  const a = 10;
+  console.log(a);
   return (
     <div className="flex items-center gap-4 p-4 rounded-lg bg-gray-100">
       <Image
