@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "next lint --fix --ext .js,.jsx,.ts,.tsx,.mjs",
     "format": "prettier --write src/**/*.{js,ts,jsx,tsx,json,css,md,mjs}",
     "format:check": "prettier --check src/**/*.{js,ts,jsx,tsx,json,css,md,mjs}",
     "prepare": "husky",
