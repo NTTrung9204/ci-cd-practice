@@ -215,3 +215,25 @@ npx --no-install commitlint --edit "$1"
 ```bash
 module.exports = { extends: ['@commitlint/config-conventional'] };
 ```
+
+- we will try trash commit: `git commit -m "hehe"`
+
+```bash
+C:\Users\trung\Documents\LapTrinh\NextJS\basic_160625\ci-cd-practice>git commit -m "hehe"
+
+> my-app@0.1.0 lint-staged
+> lint-staged
+
+✔ Backed up original state in git stash (9718b83)
+✔ Running tasks for staged files...
+✔ Applying modifications from tasks...
+✔ Cleaning up temporary files...
+⧗   input: hehe
+✖   subject may not be empty [subject-empty]
+✖   type may not be empty [type-empty]
+
+✖   found 2 problems, 0 warnings
+ⓘ   Get help: https://github.com/conventional-changelog/commitlint/#what-is-commitlint
+
+husky - commit-msg script failed (code 1)
+```
