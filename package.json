@@ -7,11 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix --ext .js,.jsx,.ts,.tsx",
-    "format": "prettier --write src/**/*.{js,ts,jsx,tsx,json,css,md}",
-    "format:check": "prettier --check src/**/*.{js,ts,jsx,tsx,json,css,md}",
+    "lint:fix": "next lint --fix --ext .js,.jsx,.ts,.tsx,.mjs",
+    "format": "prettier --write \"**/*.{js,ts,jsx,tsx,json,css,md,mjs}\"",
+    "format:check": "prettier --check src/**/*.{js,ts,jsx,tsx,json,css,md,mjs}",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "check": "npm run lint && npm run format && npm run build",
+    "test": "jest --coverage"
   },
   "dependencies": {
     "next": "15.3.3",
@@ -23,6 +25,10 @@
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -35,16 +41,17 @@
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.0",
     "husky": "^9.1.7",
+    "jest-environment-jsdom": "^30.0.2",
     "lint-staged": "^16.1.2",
     "prettier": "^3.5.3",
     "tailwindcss": "^4",
+    "ts-jest": "^29.4.0",
     "typescript": "^5"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
-      "prettier --write",
-      "git add ."
+      "prettier --write"
     ]
   },
   "config": {
