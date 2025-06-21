@@ -184,7 +184,10 @@ npm run lint-staged
 
 ```bash
 npm install --save-dev commitizen cz-conventional-changelog
+npx commitizen init cz-conventional-changelog --save-dev --save-exact
 ```
+
+- we can test it by add some files and type: `npx cz`
 
 ## COMMITLINT
 
@@ -196,3 +199,14 @@ npm install --save-dev commitizen cz-conventional-changelog
 npm install --save-dev @commitlint/cli @commitlint/config-conventional
 ```
 
+- in `.husky` folder, we create `commit-msg` file with content:
+
+```bash
+npx --no-install commitlint --edit "$1"
+```
+
+- in root folder, we create `commitlint.config.js` file:
+
+```bash
+module.exports = { extends: ['@commitlint/config-conventional'] };
+```
